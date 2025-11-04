@@ -1,3 +1,5 @@
+import { Request, Response } from "express";
+
 const express = require('express');
 const cors = require('./middlewares/cors');
 const contentType = require('./middlewares/content-type');
@@ -43,7 +45,7 @@ let pontoTuristico = []
 
 
 // Endpoint para criação de eventos
-app.post('/eventos', (req, res) => {
+app.post('/eventos', (req: Request, res: Response) => {
     const evento = req.body;
     const { titulo, cat, data, hora, local, preco, img, desc } = evento;
     const novoEventoRecebe = {
@@ -62,12 +64,12 @@ app.post('/eventos', (req, res) => {
 });
 
 // Endpoint para listagem de eventos
-app.get('/eventos', (req, res) => {
+app.get('/eventos', (req: Request, res: Response) => {
     res.json(eventos);
 });
 
 // Endpoint para atualização de evento
-app.put('/eventos/:id', (req, res) => {
+app.put('/eventos/:id', (req: Request, res: Response) => {
     const id = req.params.id;
     const updatedEvento = req.body;
     eventos = eventos.map((evento) => (evento.id === id ? updatedEvento : evento));
@@ -75,13 +77,13 @@ app.put('/eventos/:id', (req, res) => {
 });
 
 // Endpoint para deletar evento
-app.delete('/evento/:id', (req, res) => {
+app.delete('/evento/:id', (req: Request, res: Response) => {
     const id = req.params.id;
     eventos = eventos.filter((evento) => evento.id !== id);
     res.send('Evento deletado com sucesso!');
 });
 
-app.post('/cidade', (req, res) => {
+app.post('/cidade', (req: Request, res: Response) => {
     const { nome, uf, desc } = req.body;
     const novaCidade = {
         id: crypto.randomUUID(),
@@ -94,6 +96,10 @@ app.post('/cidade', (req, res) => {
     res.status(201).send('Cidade criado com sucesso!');
 })
 
-app.get('/cidade', (req, res) => {
+app.get('/cidade', (req: Request, res: Response) => {
     res.json(cidades);
 })
+
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
+});
