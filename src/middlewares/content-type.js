@@ -1,6 +1,8 @@
-const contentType = (req, res, next) => {
+import { NextFunction, Request, Response } from "express";
+
+const contentType = (req: Request, res: Response, next: NextFunction) => {
   res.type('json');
   next();
 };
 
-module.exports = contentType;
+export default contentType;

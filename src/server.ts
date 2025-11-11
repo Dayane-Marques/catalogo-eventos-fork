@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-const express = require('express');
-const cors = require('./middlewares/cors');
-const contentType = require('./middlewares/content-type');
-const bodyParser = require('./middlewares/body-parser');
+import express from 'express';
+import cors from  './middlewares/cors';
+import contentType from "./middlewares/content-type";
+import bodyParser from './middlewares/body-parser';
 
 const app = express();
 const port = 3000;

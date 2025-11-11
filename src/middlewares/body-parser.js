@@ -1,5 +1,5 @@
-const { json } = require('express');
+import { json } from 'express';
 
 const bodyParser = json();
 
-module.exports = bodyParser;
+export default bodyParser;
