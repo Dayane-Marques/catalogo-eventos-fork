@@ -9,7 +9,7 @@
     "clear:packages": "rimraf package-lock.json && rimraf dist && rimraf tsconfig.tsbuildinfo && rimraf node_modules &&npm install",
     "build": "NODE_ENV=production tsc -p tsconfig.json && tsc-alias -p tsconfig.json && npm run copy:swagger",
     "start": "node dist/server.js",
-    "start:debug": "node --inspect dist/server.js",
+    "start:debug": "node --inspect dist/server.jys",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "copy:swagger": "copyfiles -u 2 \"src/docs/**/*\" dist/docs",
     "test": "NODE_ENV=test jest --passWithNoTests --silent --noStackTrace --runInBand",
